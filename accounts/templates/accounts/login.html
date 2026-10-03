@@ -1,0 +1,318 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | MuleGuard</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #f4f7fb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1f2937;
+        }
+
+        .login-container {
+            width: 900px;
+            max-width: 95%;
+            min-height: 550px;
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            display: flex;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.10);
+        }
+
+        /* LEFT SIDE */
+
+        .login-left {
+            width: 50%;
+            background: linear-gradient(145deg, #0f172a, #1e3a5f);
+            color: white;
+            padding: 55px 45px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .brand {
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .brand span {
+            color: #38bdf8;
+        }
+
+        .tagline {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #cbd5e1;
+            margin-bottom: 40px;
+        }
+
+        .security-box {
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .security-box h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .security-box p {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #cbd5e1;
+        }
+
+        .security-item {
+            margin-top: 12px;
+            font-size: 13px;
+            color: #e2e8f0;
+        }
+
+        .security-item::before {
+            content: "✓";
+            color: #38bdf8;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        /* RIGHT SIDE */
+
+        .login-right {
+            width: 50%;
+            padding: 60px 55px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .login-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #111827;
+        }
+
+        .login-subtitle {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 35px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #374151;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            outline: none;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .form-group input:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 8px;
+            background: #2563eb;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 5px;
+        }
+
+        .login-button:hover {
+            background: #1d4ed8;
+        }
+
+        .error-message {
+            background: #fef2f2;
+            color: #b91c1c;
+            border: 1px solid #fecaca;
+            padding: 10px 12px;
+            border-radius: 7px;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .footer-text {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 12px;
+            color: #9ca3af;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 700px) {
+
+            .login-container {
+                flex-direction: column;
+                min-height: auto;
+            }
+
+            .login-left,
+            .login-right {
+                width: 100%;
+            }
+
+            .login-left {
+                padding: 35px;
+            }
+
+            .login-right {
+                padding: 40px 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <!-- LEFT SECTION -->
+
+        <div class="login-left">
+
+            <div class="brand">
+                Mule<span>Guard</span>
+            </div>
+
+            <p class="tagline">
+                Intelligent transaction monitoring and risk detection
+                for identifying suspicious money-flow patterns.
+            </p>
+
+            <div class="security-box">
+
+                <h3>Secure Financial Monitoring</h3>
+
+                <p>
+                    MuleGuard helps financial teams monitor transactions,
+                    detect suspicious activity, and investigate potential
+                    mule-account networks.
+                </p>
+
+                <div class="security-item">
+                    Transaction monitoring
+                </div>
+
+                <div class="security-item">
+                    Risk-based alerts
+                </div>
+
+                <div class="security-item">
+                    Investigation management
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT SECTION -->
+
+        <div class="login-right">
+
+            <h1 class="login-title">
+                Welcome back
+            </h1>
+
+            <p class="login-subtitle">
+                Sign in to access the MuleGuard monitoring platform.
+            </p>
+
+
+            {% if error %}
+            <div class="error-message">
+                {{ error }}
+            </div>
+            {% endif %}
+
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <div class="form-group">
+
+                    <label for="username">
+                        Username
+                    </label>
+
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+                </div>
+
+
+                <button type="submit" class="login-button">
+                    Sign In
+                </button>
+
+            </form>
+
+
+            <div class="footer-text">
+                © 2026 MuleGuard · Secure Transaction Monitoring
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
