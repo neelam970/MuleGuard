@@ -1,0 +1,62 @@
+{% extends "dashboard/base.html" %}
+
+{% block page_title %}
+Customer Investigation
+{% endblock %}
+
+{% block page_subtitle %}
+Investigate customer risk and transaction activity
+{% endblock %}
+
+{% block content %}
+
+<div class="investigation-page">
+
+    <div class="customer-info-card">
+
+        <h2>Customer Information</h2>
+
+        <div class="customer-info-grid">
+
+            <div>
+                <span>Customer ID</span>
+                <strong>{{ customer.customer_id }}</strong>
+            </div>
+
+            <div>
+                <span>Full Name</span>
+                <strong>{{ customer.full_name }}</strong>
+            </div>
+
+            <div>
+                <span>Email</span>
+                <strong>{{ customer.email }}</strong>
+            </div>
+
+            <div>
+                <span>Phone</span>
+                <strong>{{ customer.phone }}</strong>
+            </div>
+
+            <div>
+                <span>KYC Status</span>
+                <strong>{{ customer.kyc_status }}</strong>
+            </div>
+
+            <div>
+                <span>Risk Level</span>
+                <strong>{{ customer.risk_level }}</strong>
+            </div>
+
+            <div>
+                <span>Account Status</span>
+                <strong>{{ customer.account_status }}</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

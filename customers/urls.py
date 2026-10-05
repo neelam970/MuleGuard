@@ -4,7 +4,6 @@ from .views import (
     CustomerDetailAPIView,
 )
 
-
 urlpatterns = [
     path(
         "",

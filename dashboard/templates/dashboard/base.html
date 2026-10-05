@@ -1,0 +1,110 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MuleGuard</title>
+
+    <link rel="stylesheet" href="{% static 'dashboard/css/dashboard.css' %}">
+    {% block extra_css %}
+    {% endblock %}
+</head>
+
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                MuleGuard
+            </div>
+
+            <nav>
+
+                <a href="{% url 'dashboard' %}">
+                    Dashboard
+                </a>
+
+                <a href="{% url 'customer-page' %}">
+                    Customers
+                </a>
+
+                <a href="#">
+                    Transactions
+                </a>
+
+                <a href="#">
+                    Alerts
+                </a>
+
+                <a href="#">
+                    Cases
+                </a>
+
+            </nav>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Top Header -->
+            <header class="topbar">
+
+                <div>
+                    <h1>
+                        {% block page_title %}
+                        MuleGuard
+                        {% endblock %}
+                    </h1>
+
+                    <p>
+                        {% block page_subtitle %}
+                        AML & Fraud Monitoring System
+                        {% endblock %}
+                    </p>
+                </div>
+
+                <div class="user-info">
+
+                    <span class="status-dot"></span>
+
+                    <span>
+                        System Active
+                    </span>
+
+                    <span>|</span>
+
+                    <strong>
+                        {{ request.user.username }}
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <!-- Page Specific Content -->
+
+            {% block content %}
+
+            {% endblock %}
+
+        </main>
+
+    </div>
+    {% block extra_js %}
+    {% endblock %}
+</body>
+
+</html>

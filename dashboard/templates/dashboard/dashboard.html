@@ -1,128 +1,145 @@
+{% extends "dashboard/base.html" %}
+
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>MuleGuard Dashboard</title>
-
-    <link rel="stylesheet" href="{% static 'dashboard/css/dashboard.css' %}">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-
-<body>
-
-    <div class="dashboard">
-
-        <!-- Sidebar -->
-        <aside class="sidebar">
-
-            <div class="logo">
-                MuleGuard
-            </div>
-
-            <nav>
-                <a href="#" class="active">Dashboard</a>
-                <a href="#">Customers</a>
-                <a href="#">Transactions</a>
-                <a href="#">Alerts</a>
-                <a href="#">Cases</a>
-            </nav>
-
-        </aside>
+{% block page_title %}
+Dashboard
+{% endblock %}
 
 
-        <!-- Main Content -->
-        <main class="main-content">
-
-            <!-- Header -->
-            <header class="topbar">
-
-                <div>
-                    <h1>Dashboard</h1>
-                    <p>AML & Fraud Monitoring Overview</p>
-                </div>
-
-                <div class="user-info">
-                    <span class="status-dot"></span>
-                    <span>System Active</span>
-                    <span>|</span>
-                    <strong>{{ request.user.username }}</strong>
-                </div>
-
-            </header>
+{% block page_subtitle %}
+AML & Fraud Monitoring Overview
+{% endblock %}
 
 
-            <!-- Summary Cards -->
-            <section class="summary-cards">
+{% block content %}
 
-                <div class="card">
-                    <h3>Total Customers</h3>
-                    <p class="counter">{{ total_customers }}</p>
-                    <span>Registered customers</span>
-                </div>
+<!-- Summary Cards -->
 
-                <div class="card">
-                    <h3>Total Transactions</h3>
-                    <p class="counter">{{ total_transactions }}</p>
-                    <span>Processed transactions</span>
-                </div>
+<section class="summary-cards">
 
-                <div class="card risk-card">
-                    <h3>Risk Alerts</h3>
-                    <p class="counter">{{ risk_alerts }}</p>
-                    <span>Suspicious activities</span>
-                </div>
+    <div class="card">
 
-                <div class="card">
-                    <h3>Open Cases</h3>
-                    <p class="counter">{{ open_cases }}</p>
-                    <span>Under investigation</span>
-                </div>
+        <h3>Total Customers</h3>
 
-            </section>
+        <p class="counter">
+            {{ total_customers }}
+        </p>
 
-
-            <!-- Dashboard Sections -->
-            <section class="dashboard-grid">
-
-                <div class="panel">
-                    <h2>Transaction Activity</h2>
-                    <div class="chart-container">
-                        <canvas id="transactionChart"></canvas>
-                    </div>
-                </div>
-
-                <div class="panel">
-                    <h2>Risk Distribution</h2>
-                    <div class="chart-container">
-                        <canvas id="riskChart"></canvas>
-                    </div>
-                </div>
-
-            </section>
-
-
-            <!-- Recent Alerts -->
-            <section class="panel">
-
-                <h2>Recent Alerts</h2>
-
-                <div class="empty-state">
-                    No alerts available yet.
-                </div>
-
-            </section>
-
-        </main>
+        <span>
+            Registered customers
+        </span>
 
     </div>
-    <script src="{% static 'dashboard/js/dashboard.js' %}"></script>
 
 
-</body>
+    <div class="card">
 
-</html>
+        <h3>Total Transactions</h3>
+
+        <p class="counter">
+            {{ total_transactions }}
+        </p>
+
+        <span>
+            Processed transactions
+        </span>
+
+    </div>
+
+
+    <div class="card risk-card">
+
+        <h3>Risk Alerts</h3>
+
+        <p class="counter">
+            {{ risk_alerts }}
+        </p>
+
+        <span>
+            Suspicious activities
+        </span>
+
+    </div>
+
+
+    <div class="card">
+
+        <h3>Open Cases</h3>
+
+        <p class="counter">
+            {{ open_cases }}
+        </p>
+
+        <span>
+            Under investigation
+        </span>
+
+    </div>
+
+</section>
+
+
+<!-- Dashboard Charts -->
+
+<section class="dashboard-grid">
+
+    <div class="panel">
+
+        <h2>
+            Transaction Activity
+        </h2>
+
+        <div class="chart-container">
+
+            <canvas id="transactionChart"></canvas>
+
+        </div>
+
+    </div>
+
+
+    <div class="panel">
+
+        <h2>
+            Risk Distribution
+        </h2>
+
+        <div class="chart-container">
+
+            <canvas id="riskChart"></canvas>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Recent Alerts -->
+
+<section class="panel">
+
+    <h2>
+        Recent Alerts
+    </h2>
+
+    <div class="empty-state">
+
+        No alerts available yet.
+
+    </div>
+
+</section>
+
+{% endblock %}
+
+
+{% block extra_js %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="{% static 'dashboard/js/dashboard.js' %}"></script>
+
+{% endblock %}

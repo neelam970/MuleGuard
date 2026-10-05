@@ -1,9 +1,10 @@
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
+from django.shortcuts import render, get_object_or_404
 from .models import Customer
 from .serializers import CustomerSerializer
+
 
 
 class CustomerListCreateAPIView(APIView):
@@ -118,3 +119,21 @@ class CustomerDetailAPIView(APIView):
             serializer.errors,
             status=status.HTTP_400_BAD_REQUEST
         )
+def customer_page(request):
+    return render(
+        request,
+        "customers/customers.html"
+    )
+def customer_investigate(request, pk):
+    customer = get_object_or_404(
+        Customer,
+        pk=pk
+    )
+
+    return render(
+        request,
+        "customers/investigate.html",
+        {
+            "customer": customer
+        }
+    )

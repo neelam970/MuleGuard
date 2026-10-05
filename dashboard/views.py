@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from customers.models import Customer
 
@@ -20,4 +20,18 @@ def dashboard(request):
         request,
         "dashboard/dashboard.html",
         context
+    )
+
+def customer_page(request):
+    return render(
+        request,
+        "customers/customers.html"
+    )
+def customer_investigate(request, pk):
+    customer = get_object_or_404(Customer, pk=pk)
+
+    return render(
+        request,
+        "customers/investigate.html",
+        {"customer": customer}
     )
