@@ -1,6 +1,7 @@
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from django.shortcuts import render,get_object_or_404
 
 from .models import Transaction
 from .serializers import TransactionSerializer
@@ -130,3 +131,21 @@ class TransactionDetailAPIView(APIView):
             {"message": "Transaction deleted successfully"},
             status=status.HTTP_204_NO_CONTENT
         )
+
+
+def transaction_page(request):
+    return render(
+        request,
+        "transactions/transactions.html"
+    )
+def transaction_detail(request, pk):
+    transaction = get_object_or_404(
+        Transaction,
+        pk=pk
+    )
+
+    return render(
+        request,
+        "transactions/transaction_detail.html",
+        {"transaction": transaction}
+    )

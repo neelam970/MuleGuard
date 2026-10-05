@@ -1,0 +1,98 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+
+{% block page_title %}
+Transaction Details
+{% endblock %}
+
+{% block page_subtitle %}
+View transaction information
+{% endblock %}
+
+{% block content %}
+
+<div class="transaction-detail-page">
+
+    <div class="transaction-detail-card">
+
+        <div class="detail-header">
+            <h2>Transaction Information</h2>
+
+            <a href="{% url 'transaction-page' %}" class="back-transactions-btn">
+                &larr; Back to Transactions
+            </a>
+        </div>
+
+
+        <div class="transaction-detail-grid">
+
+            <div class="detail-item">
+                <span>Transaction ID</span>
+                <strong>{{ transaction.transaction_id }}</strong>
+            </div>
+
+            <div class="detail-item">
+                <span>Sender</span>
+                <strong>
+                    {{ transaction.sender.customer_id }}
+                    -
+                    {{ transaction.sender.full_name }}
+                </strong>
+            </div>
+
+            <div class="detail-item">
+                <span>Receiver</span>
+                <strong>
+                    {{ transaction.receiver.customer_id }}
+                    -
+                    {{ transaction.receiver.full_name }}
+                </strong>
+            </div>
+
+            <div class="detail-item">
+                <span>Amount</span>
+                <strong>₹{{ transaction.amount }}</strong>
+            </div>
+
+            <div class="detail-item">
+                <span>Transaction Type</span>
+                <strong>{{ transaction.transaction_type }}</strong>
+            </div>
+
+            <div class="detail-item">
+                <span>Transaction Date</span>
+                <strong>{{ transaction.transaction_date }}</strong>
+            </div>
+
+            <div class="detail-item">
+                <span>Status</span>
+                <strong>{{ transaction.status }}</strong>
+            </div>
+
+            <div class="detail-item">
+                <span>Created At</span>
+                <strong>{{ transaction.created_at }}</strong>
+            </div>
+
+        </div>
+
+
+        <div class="description-section">
+
+            <h3>Description</h3>
+
+            <p>
+                {% if transaction.description %}
+                {{ transaction.description }}
+                {% else %}
+                No description provided.
+                {% endif %}
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
