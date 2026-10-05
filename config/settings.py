@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'alerts',
     'cases',
     'dashboard',
+    "rest_framework",
 ]
 
 MIDDLEWARE = [
