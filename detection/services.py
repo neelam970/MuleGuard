@@ -2,6 +2,7 @@ from datetime import timedelta
 
 from django.conf import settings
 from django.utils import timezone
+from alerts.services import create_alert_from_detection
 
 from transactions.models import Transaction
 
@@ -121,9 +122,17 @@ def run_detection_rules(transaction):
         for result in results
     )
 
-    return {
-        "transaction_id": transaction.transaction_id,
-        "is_suspicious": is_suspicious,
-        "risk_score": total_risk_score,
-        "rules": results,
-    }
+    detection_result = {
+    "transaction_id": transaction.transaction_id,
+    "is_suspicious": is_suspicious,
+    "risk_score": total_risk_score,
+    "rules": results,
+}
+
+    if is_suspicious:
+        create_alert_from_detection(
+            transaction,
+            detection_result,
+        )
+
+    return detection_result

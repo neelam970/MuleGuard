@@ -1,0 +1,56 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'alerts/css/alerts.css' %}">
+{% endblock %}
+
+{% block page_title %}
+Alerts
+{% endblock %}
+
+{% block page_subtitle %}
+Suspicious activity monitoring
+{% endblock %}
+
+{% block content %}
+
+<div class="page-actions">
+    <div>
+        <h2>Alerts</h2>
+        <p>Review suspicious transactions detected by MuleGuard.</p>
+    </div>
+
+    <a href="{% url 'dashboard' %}" class="back-btn">
+        Back to Dashboard
+    </a>
+</div>
+
+<div class="table-card">
+
+    <table>
+        <thead>
+            <tr>
+                <th>Alert ID</th>
+                <th>Customer</th>
+                <th>Transaction</th>
+                <th>Rule</th>
+                <th>Risk Score</th>
+                <th>Severity</th>
+                <th>Status</th>
+                <th>Created</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody id="alertTableBody">
+            <!-- Alerts will be loaded using JavaScript -->
+        </tbody>
+    </table>
+
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'alerts/js/alerts.js' %}"></script>
+{% endblock %}

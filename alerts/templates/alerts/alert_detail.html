@@ -1,0 +1,127 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'alerts/css/alerts.css' %}">
+{% endblock %}
+
+{% block page_title %}
+Alert Details
+{% endblock %}
+
+{% block page_subtitle %}
+Review suspicious activity
+{% endblock %}
+
+{% block content %}
+
+<div class="page-actions">
+    <div>
+        <h2>Alert Details</h2>
+        <p>Review the complete suspicious activity information.</p>
+    </div>
+
+    <a href="{% url 'alert-page' %}" class="back-btn">
+        Back to Alerts
+    </a>
+</div>
+
+<div class="table-card">
+
+    <h3>{{ alert.alert_id }}</h3>
+
+    <table>
+
+        <tr>
+            <th>Alert ID</th>
+            <td>{{ alert.alert_id }}</td>
+        </tr>
+
+        <tr>
+            <th>Customer</th>
+            <td>
+                {{ alert.customer.customer_id }} -
+                {{ alert.customer.full_name }}
+            </td>
+        </tr>
+
+        <tr>
+            <th>Transaction</th>
+            <td>{{ alert.transaction.transaction_id }}</td>
+        </tr>
+
+        <tr>
+            <th>Rule</th>
+            <td>{{ alert.rule }}</td>
+        </tr>
+
+        <tr>
+            <th>Risk Score</th>
+            <td>{{ alert.risk_score }}</td>
+        </tr>
+
+        <tr>
+            <th>Severity</th>
+            <td>{{ alert.get_severity_display }}</td>
+        </tr>
+
+        <tr>
+            <th>Status</th>
+            <td>
+
+                <select id="alertStatus">
+
+                    <option value="OPEN" {% if alert.status == "OPEN" %}selected{% endif %}>
+                        Open
+                    </option>
+
+                    <option value="INVESTIGATING" {% if alert.status == "INVESTIGATING" %}selected{% endif %}>
+                        Investigating
+                    </option>
+
+                    <option value="RESOLVED" {% if alert.status == "RESOLVED" %}selected{% endif %}>
+                        Resolved
+                    </option>
+
+                    <option value="FALSE_POSITIVE" {% if alert.status == "FALSE_POSITIVE" %}selected{% endif %}>
+                        False Positive
+                    </option>
+
+                </select>
+
+                <button type="button" id="updateAlertStatusBtn" data-alert-id="{{ alert.id }}">
+                    Update Status
+                </button>
+
+            </td>
+        </tr>
+
+        <tr>
+            <th>Message</th>
+            <td>{{ alert.message }}</td>
+        </tr>
+
+        <tr>
+            <th>Created</th>
+            <td>{{ alert.created_at }}</td>
+        </tr>
+
+        <tr>
+            <th>Updated</th>
+            <td>{{ alert.updated_at }}</td>
+        </tr>
+
+    </table>
+
+</div>
+
+{% endblock %}
+
+
+{% block extra_js %}
+
+{% csrf_token %}
+
+<script src="{% static 'alerts/js/alert_detail.js' %}"></script>
+
+{% endblock %}

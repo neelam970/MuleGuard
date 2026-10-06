@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
-
+from alerts.models import Alert
 from customers.models import Customer
 from transactions.models import Transaction
 
@@ -14,7 +14,7 @@ def dashboard(request):
     context = {
         "total_customers": total_customers,
         "total_transactions": total_transactions,
-        "risk_alerts": 0,
+        "risk_alerts": Alert.objects.filter(status="OPEN").count(),
         "open_cases": 0,
     }
 
